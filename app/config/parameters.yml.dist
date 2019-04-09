@@ -2,9 +2,12 @@
 # Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
 # https://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
 parameters:
+    # App
+    app_name: Padawan
+
     database_host: 127.0.0.1
     database_port: ~
-    database_name: symfony
+    database_name: padawan
     database_user: root
     database_password: ~
     # You should uncomment this if you want to use pdo_sqlite
@@ -12,6 +15,8 @@ parameters:
 
     mailer_transport: smtp
     mailer_host: 127.0.0.1
+    mailer_port: ~
+    mailer_encryption: ~
     mailer_user: ~
     mailer_password: ~
 
