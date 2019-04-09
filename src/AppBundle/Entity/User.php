@@ -3,7 +3,10 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use FOS\UserBundle\Model\User as BaseUser;
+use FOS\UserBundle\Model\User as FOSUBUser;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Symfony\Component\Security\Core\User\EquatableInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
@@ -12,7 +15,7 @@ use FOS\UserBundle\Model\User as BaseUser;
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class User extends BaseUser
+class User extends FOSUBUser implements AdvancedUserInterface, EquatableInterface, \Serializable
 {
     /**
      * @var int
@@ -31,6 +34,20 @@ class User extends BaseUser
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="google_id", type="string", length=255, nullable=true)
+     */
+    protected $googleId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="google_access_token", type="string", length=255, nullable=true)
+     */
+    protected $googleAccessToken;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
@@ -44,6 +61,12 @@ class User extends BaseUser
      */
     private $updatedAt;
 
+
+    public function isEqualTo(UserInterface $user)
+    {
+        /** @var User $user */
+        return $this->id === $user->getId();
+    }
 
     /**
      * @ORM\PrePersist
@@ -128,5 +151,53 @@ class User extends BaseUser
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set googleId.
+     *
+     * @param string|null $googleId
+     *
+     * @return User
+     */
+    public function setGoogleId($googleId = null)
+    {
+        $this->googleId = $googleId;
+
+        return $this;
+    }
+
+    /**
+     * Get googleId.
+     *
+     * @return string|null
+     */
+    public function getGoogleId()
+    {
+        return $this->googleId;
+    }
+
+    /**
+     * Set googleAccessToken.
+     *
+     * @param string|null $googleAccessToken
+     *
+     * @return User
+     */
+    public function setGoogleAccessToken($googleAccessToken = null)
+    {
+        $this->googleAccessToken = $googleAccessToken;
+
+        return $this;
+    }
+
+    /**
+     * Get googleAccessToken.
+     *
+     * @return string|null
+     */
+    public function getGoogleAccessToken()
+    {
+        return $this->googleAccessToken;
     }
 }

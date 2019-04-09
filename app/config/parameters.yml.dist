@@ -22,3 +22,7 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
+
+    # Google credentials
+    google_client_id: ~
+    google_client_secret: ~

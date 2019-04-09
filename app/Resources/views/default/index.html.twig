@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <a class="btn-auth btn-google large" href="{{ path('hwi_oauth_service_redirect', {service: "google"}) }}">Google</a>
     <div id="wrapper">
         <div id="container">
             <div id="welcome">
