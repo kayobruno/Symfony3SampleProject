@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="text-center mt-5 pt-5" style="width: 250px; margin: auto">
-        <div class="foo">
+    <div class="login">
+        <div class="login-card">
             <img class="mb-4" src="{{ asset('logo.svg') }}" alt="{{ 'project'|trans }}" width="100">
             <h1 class="h3 mb-3 font-weight-normal">{{ 'project'|trans }}</h1>
-            <a class="btn btn-success btn-block" href="{{ path('hwi_oauth_service_redirect', {service: "google"}) }}">Login</a>
+            <a class="btn btn-secondary btn-block" href="{{ path('hwi_oauth_service_redirect', {service: "google"}) }}">Login</a>
         </div>
     </div>
 {% endblock %}
