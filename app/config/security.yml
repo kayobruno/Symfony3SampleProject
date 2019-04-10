@@ -1,11 +1,15 @@
-# To get started with security, check out the documentation:
-# https://symfony.com/doc/current/security.html
 security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
 
-    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    role_hierarchy:
+        ROLE_SUPPORT: [ROLE_USER]
+        ROLE_ADMIN: [ROLE_SUPPORT]
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN]
+
     providers:
-        in_memory:
-            memory: ~
+        fos_userbundle:
+            id: fos_user.user_provider.username
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -13,12 +17,32 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
+            logout:       true
+            anonymous:    true
+
         main:
-            anonymous: ~
-            # activate different ways to authenticate
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager
+                login_path: fos_user_security_login
+                check_path: fos_user_security_check
+                always_use_default_target_path: false
+                default_target_path: homepage
+                use_referer: true
+            oauth:
+                resource_owners:
+                    google: "/login/check-google"
+                login_path:   homepage
+                failure_path: homepage
 
-            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
-            #http_basic: ~
+                oauth_user_provider:
+                    service: AppBundle\Security\Core\User\FOSUBUserProvider
+            logout:
+                path: fos_user_security_logout
+                target: homepage
+            anonymous:    true
 
-            # https://symfony.com/doc/current/security/form_login_setup.html
-            #form_login: ~
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: ROLE_ADMIN }

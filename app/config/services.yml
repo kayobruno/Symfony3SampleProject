@@ -29,7 +29,8 @@ services:
         public: true
         tags: ['controller.service_arguments']
 
-    # add more services, or override services that need manual wiring
-    # AppBundle\Service\ExampleService:
-    #     arguments:
-    #         $someArgument: 'some_value'
+    AppBundle\Security\Core\User\FOSUBUserProvider:
+        $properties: { google: google_id }
+
+    AppBundle\Service\Integration\KernelIntegrationService:
+        $baseUri: "%rest_kernel_host%"

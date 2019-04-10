@@ -1,0 +1,28 @@
+{
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "rules": {
+    "no-console": [1, { "allow": ["warn", "error"] }],
+    "import/prefer-default-export": 0,
+    "no-multiple-empty-lines": ["error", { "max": 1, "maxBOF": 1}],
+    "no-plusplus": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/no-unresolved": 0,
+    "semi": [
+      "error",
+      "never"
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 80,
+        "ignoreUrls": true,
+        "ignoreStrings": true
+      }
+    ]
+  }
+}
