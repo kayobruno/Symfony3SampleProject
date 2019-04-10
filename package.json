@@ -2,7 +2,14 @@
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.8.1",
     "@symfony/webpack-encore": "^0.26.0",
+    "babel-eslint": "^10.0.1",
     "bootstrap": "^4.3.1",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-loader": "^2.1.2",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4",
     "jquery": "^3.3.1",
     "node-sass": "^4.11.0",
     "popper.js": "^1.15.0",
@@ -13,6 +20,7 @@
     "dev-server": "encore dev-server",
     "dev": "encore dev",
     "watch": "encore dev --watch",
+    "lint": "eslint app/Resources/assets/js",
     "build": "encore production"
   }
 }

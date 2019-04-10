@@ -40,6 +40,7 @@ Encore
   .autoProvidejQuery()
 
   .enableBuildNotifications()
+  .enableEslintLoader('airbnb')
 ;
 
 module.exports = Encore.getWebpackConfig();

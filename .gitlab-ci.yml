@@ -1,0 +1,17 @@
+image: node:latest
+stages:
+  - lint
+
+# This folder is cached between builds
+# http://docs.gitlab.com/ce/ci/yaml/README.html#cache
+cache:
+  paths:
+    - node_modules/
+
+before_script:
+  - yarn
+
+lint:js:
+  stage: lint
+  script:
+    - yarn lint
