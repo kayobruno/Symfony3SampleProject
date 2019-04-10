@@ -31,3 +31,6 @@ services:
 
     AppBundle\Security\Core\User\FOSUBUserProvider:
         $properties: { google: google_id }
+
+    AppBundle\Service\Integration\KernelIntegrationService:
+        $baseUri: "%rest_kernel_host%"

@@ -26,3 +26,6 @@ parameters:
     # Google credentials
     google_client_id: ~
     google_client_secret: ~
+
+    # Integrações REST
+    rest_kernel_host: 'http://192.168.0.4:8000/api'
