@@ -1,0 +1,10 @@
+project: Supervisor
+
+language: Português
+
+yes: Sim
+no: Não
+all: Todos
+
+error:
+    internal_error: Ocorreu um erro. Contate o Suporte
