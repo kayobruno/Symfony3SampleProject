@@ -4,7 +4,7 @@ namespace AppBundle\Exception;
 
 use Symfony\Component\HttpFoundation\Response;
 
-class SupervisorServiceUnavailableException extends SupervisorException
+class CouponServiceUnavailableException extends CouponException
 {
     protected $status = Response::HTTP_SERVICE_UNAVAILABLE;
 }

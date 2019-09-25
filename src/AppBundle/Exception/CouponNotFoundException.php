@@ -4,7 +4,7 @@ namespace AppBundle\Exception;
 
 use Symfony\Component\HttpFoundation\Response;
 
-class SupervisorNotFoundException extends SupervisorException
+class CouponNotFoundException extends CouponException
 {
     protected $status = Response::HTTP_NOT_FOUND;
 }

@@ -4,7 +4,7 @@ namespace AppBundle\Exception;
 
 use Symfony\Component\HttpFoundation\Response;
 
-class SupervisorUnprocessableEntityException extends SupervisorException
+class CouponUnprocessableEntityException extends CouponException
 {
     protected $status = Response::HTTP_UNPROCESSABLE_ENTITY;
 }

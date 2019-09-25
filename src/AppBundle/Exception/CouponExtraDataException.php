@@ -4,7 +4,7 @@ namespace AppBundle\Exception;
 
 use Symfony\Component\HttpFoundation\Response;
 
-class SupervisorExtraDataException extends SupervisorException
+class CouponExtraDataException extends CouponException
 {
     /**
      * @var array
