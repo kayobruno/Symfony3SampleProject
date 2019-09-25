@@ -3,18 +3,17 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>{% block title %}Supervisor{% endblock %}</title>
-        <link rel="stylesheet" href="{{ asset('build/app.css') }}">
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}Coupon{% endblock %}</title>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {{ encore_entry_link_tags('app') }}
+        {% block stylesheets %}{% endblock %}
     </head>
     <body>
         {% if app.user %} {% include 'partials/header.html.twig' %} {% endif %}
-        <div class="container-fluid">
+        <div class="container mx-auto">
             {% block body %}{% endblock %}
         </div>
+        {{ encore_entry_script_tags('app') }}
         {% block javascripts %}{% endblock %}
-        <script src="{{ asset('build/runtime.js') }}"></script>
-        <script src="{{ asset('build/app.js') }}"></script>
     </body>
 </html>
