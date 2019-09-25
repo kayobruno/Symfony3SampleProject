@@ -10,7 +10,7 @@
     </head>
     <body>
         {% if app.user %} {% include 'partials/header.html.twig' %} {% endif %}
-        <div class="container-fluid">
+        <div>
             {% block body %}{% endblock %}
         </div>
         {% block javascripts %}{% endblock %}
