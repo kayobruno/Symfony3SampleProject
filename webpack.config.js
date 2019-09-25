@@ -41,6 +41,14 @@ Encore
 
   .enableBuildNotifications()
   .enableEslintLoader('airbnb')
+
+  .enablePostCssLoader(function(options) {
+      options.config = {
+        path: 'config/postcss.config.js'
+      }
+    },
+    {resolveUrlLoader: false}
+  )
 ;
 
 module.exports = Encore.getWebpackConfig();

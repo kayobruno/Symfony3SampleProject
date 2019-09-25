@@ -9,6 +9,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
     "node-sass": "^4.11.0",
+    "postcss-loader": "^3.0.0",
     "sass-loader": "^7.0.1",
     "webpack-notifier": "^1.6.0"
   },
@@ -18,5 +19,8 @@
     "watch": "encore dev --watch",
     "lint": "eslint app/Resources/assets/js",
     "build": "encore production"
+  },
+  "dependencies": {
+    "tailwindcss": "^1.1.2"
   }
 }

@@ -105,3 +105,5 @@ httplug:
             factory: 'httplug.factory.curl'
         hwi_oauth:
             factory: 'httplug.client.default'
+webpack_encore:
+    output_path: "%kernel.root_dir%/../web/build/"
