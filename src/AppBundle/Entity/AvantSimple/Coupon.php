@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity\AvantSimple;
 
+use AppBundle\Entity\BaseEntity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -12,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AvantSimple\CouponRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class Coupon
+class Coupon extends BaseEntity
 {
     /**
      * @var int
@@ -26,23 +27,23 @@ class Coupon
     /**
      * @var string
      *
-     * @ORM\Column(name="code", type="string", length=255, unique=true)
+     * @ORM\Column(name="code", type="string", length=50, unique=true)
      */
     private $code;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="begins_at", type="datetime")
+     * @ORM\Column(name="starts_at", type="datetime")
      */
-    private $beginsAt;
+    private $startsAt;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="ends_at", type="datetime")
+     * @ORM\Column(name="finishes_at", type="datetime")
      */
-    private $endsAt;
+    private $finishesAt;
 
     /**
      * @var int
@@ -50,20 +51,6 @@ class Coupon
      * @ORM\Column(name="quantity", type="integer")
      */
     private $quantity;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="created_at", type="datetime")
-     */
-    private $createdAt;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="updated_at", type="datetime")
-     */
-    private $updatedAt;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\AvantSimple\Promotion", inversedBy="coupons")
@@ -82,19 +69,6 @@ class Coupon
     public function __construct()
     {
         $this->redeems = new ArrayCollection();
-    }
-
-    /**
-     * @ORM\PrePersist
-     * @ORM\PreUpdate
-     */
-    public function updateTimestamps()
-    {
-        $this->setUpdatedAt(new \DateTime('now'));
-
-        if ($this->getCreatedAt() == null) {
-            $this->setCreatedAt(new \DateTime('now'));
-        }
     }
 
     /**
@@ -132,51 +106,51 @@ class Coupon
     }
 
     /**
-     * Set beginsAt.
+     * Set startsAt.
      *
-     * @param \DateTime $beginsAt
+     * @param \DateTime $startsAt
      *
      * @return Coupon
      */
-    public function setBeginsAt($beginsAt)
+    public function setStartsAt($startsAt)
     {
-        $this->beginsAt = $beginsAt;
+        $this->startsAt = $startsAt;
 
         return $this;
     }
 
     /**
-     * Get beginsAt.
+     * Get startsAt.
      *
      * @return \DateTime
      */
-    public function getBeginsAt()
+    public function getStartsAt()
     {
-        return $this->beginsAt;
+        return $this->startsAt;
     }
 
     /**
-     * Set endsAt.
+     * Set finishesAt.
      *
-     * @param \DateTime $endsAt
+     * @param \DateTime $finishesAt
      *
      * @return Coupon
      */
-    public function setEndsAt($endsAt)
+    public function setFinishesAt($finishesAt)
     {
-        $this->endsAt = $endsAt;
+        $this->finishesAt = $finishesAt;
 
         return $this;
     }
 
     /**
-     * Get endsAt.
+     * Get finishesAt.
      *
      * @return \DateTime
      */
-    public function getEndsAt()
+    public function getFinishesAt()
     {
-        return $this->endsAt;
+        return $this->finishesAt;
     }
 
     /**
@@ -201,54 +175,6 @@ class Coupon
     public function getQuantity()
     {
         return $this->quantity;
-    }
-
-    /**
-     * Set createdAt.
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return Coupon
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Get createdAt.
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Set updatedAt.
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return Coupon
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt.
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
     }
 
     /**
