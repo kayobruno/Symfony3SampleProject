@@ -21,7 +21,8 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
             new Http\HttplugBundle\HttplugBundle(),
-            new Symfony\WebpackEncoreBundle\WebpackEncoreBundle()
+            new Symfony\WebpackEncoreBundle\WebpackEncoreBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
