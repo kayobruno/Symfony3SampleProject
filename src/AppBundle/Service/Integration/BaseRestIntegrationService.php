@@ -2,7 +2,7 @@
 
 namespace AppBundle\Service\Integration;
 
-use AppBundle\Exception\CouponServiceUnavailableException;
+use AppBundle\Exception\AppServiceUnavailableException;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
@@ -76,7 +76,7 @@ class BaseRestIntegrationService
     /**
      * @param $contents
      * @return mixed|null
-     * @throws CouponServiceUnavailableException
+     * @throws AppServiceUnavailableException
      */
     protected function decode($contents)
     {
@@ -86,7 +86,7 @@ class BaseRestIntegrationService
                 $data = \GuzzleHttp\json_decode($contents, true);
             }
         } catch (\InvalidArgumentException $e) {
-            throw new CouponServiceUnavailableException(base64_encode($e->getMessage()));
+            throw new AppServiceUnavailableException(base64_encode($e->getMessage()));
         }
         return $data;
     }
@@ -96,7 +96,7 @@ class BaseRestIntegrationService
      * @param array $query
      * @param int $timeout
      * @return array
-     * @throws CouponServiceUnavailableException
+     * @throws AppServiceUnavailableException
      */
     protected function proxy(Request $request, array $query = [], int $timeout = 10)
     {
@@ -117,12 +117,12 @@ class BaseRestIntegrationService
                 $contents = $e->getResponse()->getBody();
                 $status = $e->getCode();
             } else {
-                throw new CouponServiceUnavailableException('Pas de réponse');
+                throw new AppServiceUnavailableException('Pas de réponse');
             }
         } catch (GuzzleException $e) {
-            throw new CouponServiceUnavailableException($e);
+            throw new AppServiceUnavailableException($e);
         } catch (\Exception $e) {
-            throw new CouponServiceUnavailableException($e);
+            throw new AppServiceUnavailableException($e);
         }
 
         $data = json_decode((string) $contents, true);
@@ -130,7 +130,7 @@ class BaseRestIntegrationService
             $data = \GuzzleHttp\json_decode((string) $contents, true);
         } catch (\InvalidArgumentException $e) {
             if ($status != Response::HTTP_NO_CONTENT) {
-                throw new CouponServiceUnavailableException(
+                throw new AppServiceUnavailableException(
                     'La syntaxe de la response est erronée: '.dump((string) $contents)
                     . ' >>> ' . json_last_error_msg()
                 );

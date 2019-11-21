@@ -2,7 +2,7 @@
 
 namespace AppBundle\Service\Integration;
 
-use AppBundle\Exception\CouponServiceUnavailableException;
+use AppBundle\Exception\AppServiceUnavailableException;
 use GuzzleHttp\Psr7\Request;
 
 class KernelIntegrationService extends BaseRestIntegrationService
@@ -12,7 +12,7 @@ class KernelIntegrationService extends BaseRestIntegrationService
      *
      * @param string $unitEmail
      * @return array
-     * @throws CouponServiceUnavailableException
+     * @throws AppServiceUnavailableException
      */
     public function getUnitInfo(string $unitEmail = null): array
     {

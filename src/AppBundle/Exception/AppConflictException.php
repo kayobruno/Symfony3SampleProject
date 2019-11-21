@@ -4,7 +4,7 @@ namespace AppBundle\Exception;
 
 use Symfony\Component\HttpFoundation\Response;
 
-class CouponConflictException extends CouponException
+class AppConflictException extends AppException
 {
     protected $status = Response::HTTP_CONFLICT;
 }

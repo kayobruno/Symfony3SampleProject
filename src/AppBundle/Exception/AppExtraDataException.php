@@ -4,7 +4,7 @@ namespace AppBundle\Exception;
 
 use Symfony\Component\HttpFoundation\Response;
 
-class CouponExtraDataException extends CouponException
+class AppExtraDataException extends AppException
 {
     /**
      * @var array
