@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace AppBundle\Controller\Web;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,6 +18,6 @@ class HomepageController extends Controller
         if ($this->getUser()) {
             return $this->render('homepage/index.html.twig');
         }
-        return $this->render('homepage/login.html.twig');
+        return $this->redirectToRoute('fos_user_security_login');
     }
 }

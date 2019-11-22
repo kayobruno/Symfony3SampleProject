@@ -4,7 +4,7 @@ namespace AppBundle\Exception;
 
 use Symfony\Component\HttpFoundation\Response;
 
-class CouponNotFoundException extends CouponException
+class AppNotFoundException extends AppException
 {
     protected $status = Response::HTTP_NOT_FOUND;
 }

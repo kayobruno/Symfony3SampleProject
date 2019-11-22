@@ -23,6 +23,8 @@ class AppKernel extends Kernel
             new Http\HttplugBundle\HttplugBundle(),
             new Symfony\WebpackEncoreBundle\WebpackEncoreBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
+            new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle(),
+            new Nelmio\CorsBundle\NelmioCorsBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

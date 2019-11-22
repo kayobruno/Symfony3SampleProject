@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block body %}
+    <form class="login-container" action="{{ path("fos_user_security_check") }}" method="post">
+        {% if csrf_token %}
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+        {% endif %}
+
+        <img class="mb-4" src="http://cdn.sobrancelhasdesign.com.br/sd.png" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">{{ 'project'|trans({}, 'messages') }}</h1>
+
+        <label for="username" class="sr-only">{{ 'security.login.username'|trans }}</label>
+        <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username"  class="form-control" placeholder="{{ 'security.login.username'|trans }}" autofocus="" />
+
+        <label for="password" class="sr-only">{{ 'security.login.password'|trans }}</label>
+        <input type="password" id="password" name="_password" required="required" autocomplete="current-password" class="form-control" placeholder="{{ 'security.login.password'|trans }}"/>
+
+        <div class="checkbox mb-3">
+
+            <label for="remember_me">
+                <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                {{ 'security.login.remember_me'|trans }}
+            </label>
+        </div>
+        <input
+            type="submit"
+            id="_submit"
+            name="_submit"
+            class="btn btn-lg btn-secondary btn-block"
+            value="{{ 'security.login.submit'|trans }}"
+        />
+        <a href="{{ path('hwi_oauth_service_redirect', {service: "google"}) }}" class="my-1">
+            Login com Google
+        </a>
+
+        {% if error %}
+            <div class="mt-2 text-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+    </form>
+{% endblock %}
