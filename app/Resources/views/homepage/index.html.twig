@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    Welcome, <strong>{{ app.user.name }}</strong>! You are logged in
+    Welcome, <strong>{{ app.user.name|default(app.user) }}</strong>! You are logged in
 {% endblock %}
