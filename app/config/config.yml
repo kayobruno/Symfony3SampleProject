@@ -108,6 +108,29 @@ httplug:
 webpack_encore:
     output_path: "%kernel.root_dir%/../web/build/"
 
+lexik_jwt_authentication:
+    private_key_path: "%jwt_private_key_path%"
+    public_key_path:  "%jwt_public_key_path%"
+    pass_phrase:      "%jwt_key_pass_phrase%"
+    token_ttl:        "%jwt_token_ttl%"
+
+nelmio_cors:
+    paths:
+        defaults:
+            allow_credentials: true
+            allow_origin: []
+            allow_headers: []
+            allow_methods: []
+            expose_headers: []
+            max_age: 0
+            hosts: []
+        '^/api':
+            allow_credentials: false
+            allow_origin: "%cors_origin%"
+            allow_methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS']
+            max_age: 1728000
+            allow_headers: ['Authorization', 'Content-Type']
+
 jms_serializer:
     property_naming:
         id: 'jms_serializer.identical_property_naming_strategy'

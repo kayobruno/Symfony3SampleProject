@@ -13,6 +13,14 @@ hwi_oauth_redirect:
 _google_login:
     path: /login/check-google
 
-app:
-    resource: '@AppBundle/Controller/'
+api_login:
+    path: /api/login
+
+app_api:
+    resource: '@AppBundle/Controller/Api'
+    type: annotation
+    prefix: api
+
+app_web:
+    resource: '@AppBundle/Controller/Web'
     type: annotation
