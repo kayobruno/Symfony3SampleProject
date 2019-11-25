@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class BaseEntity
+ * @ORM\MappedSuperclass
  * @ORM\HasLifecycleCallbacks
  */
 abstract class BaseEntity
@@ -28,7 +29,7 @@ abstract class BaseEntity
      * @ORM\PrePersist
      * @ORM\PreUpdate
      */
-    private function updateTimestamps()
+    public function updateTimestamps()
     {
         $this->setUpdatedAt(new \DateTime('now'));
 
